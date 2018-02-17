@@ -19,6 +19,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
 import javax.sql.DataSource;
 
@@ -65,10 +66,30 @@ public class AuthServerOAuth2Config
             AuthorizationServerEndpointsConfigurer endpoints)
             throws Exception {
 
+
+
         endpoints
                 .tokenStore(tokenStore())
                 .authenticationManager(authenticationManager);
+
+//        endpoints
+//                .accessTokenConverter(accessTokenConverter())
+//                .authenticationManager(authenticationManager);
+
+
+//        endpoints.authenticationManager(authenticationManager);
+
+
+//        endpoints.userDetailsService();
+
     }
+
+
+    @Bean
+    public JwtAccessTokenConverter accessTokenConverter() {
+        return new JwtAccessTokenConverter();
+    }
+
 
     @Bean
     public TokenStore tokenStore() {

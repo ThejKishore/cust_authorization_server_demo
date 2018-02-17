@@ -6,10 +6,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 import java.io.PrintStream;
 
 @SpringBootApplication
+@EnableResourceServer
 public class DemooauthserverApplication {
 
 	public static void main(String[] args) {
